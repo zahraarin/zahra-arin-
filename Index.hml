@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio & Data Diri | @_zaraasa_</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        h1, h2, h3, .font-heading {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navbar / Header -->
+    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold shadow-md">
+                    Z
+                </div>
+                <span class="font-heading font-bold text-lg tracking-tight text-slate-900">Portofolio<span class="text-indigo-600">.Ku</span></span>
+            </div>
+
+            <!-- Navigasi & Status Mode Edit -->
+            <div class="flex items-center gap-3">
+                <div id="authStatusBadge" class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-600 border border-slate-200">
+                    <i class="fas fa-lock text-slate-400"></i>
+                    <span>Mode Lihat</span>
+                </div>
+                
+                <button onclick="openIdentityMenu()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium shadow-sm transition-all active:scale-95">
+                    <i class="fas fa-user-edit"></i>
+                    <span>Isi / Edit Identitas</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <!-- HERO & IDENTITAS UTAMA -->
+        <section class="bg-white rounded-3xl shadow-sm border border-slate-200/80 overflow-hidden">
+            <!-- Banner Gradien -->
+            <div class="h-32 sm:h-44 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 relative">
+                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            </div>
+
+            <div class="px-6 sm:px-10 pb-8">
+                <!-- Foto Profil & Kontak Cepat -->
+                <div class="relative flex flex-col sm:flex-row sm:items-end justify-between -mt-16 sm:-mt-20 mb-6 gap-4">
+                    <div class="relative group inline-block">
+                        <img id="displayFoto" src="https://placehold.co/300x300/6366f1/ffffff?text=Foto+Profil" 
+                             onerror="this.src='https://placehold.co/300x300/6366f1/ffffff?text=Profil'"
+                             alt="Foto Profil" 
+                             class="w-32 h-32 sm:w-40 sm:h-40 rounded-3xl object-cover border-4 border-white shadow-lg bg-slate-100">
+                        <button onclick="openIdentityMenu()" title="Ubah Foto & Identitas" class="absolute bottom-2 right-2 w-9 h-9 rounded-xl bg-slate-900/80 hover:bg-indigo-600 text-white flex items-center justify-center shadow-md transition-colors">
+                            <i class="fas fa-camera text-sm"></i>
+                        </button>
+                    </div>
+
+                    <!-- Tombol Kontak WhatsApp & Instagram -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <a href="https://wa.me/62895421856508" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-semibold shadow-sm transition-all hover:-translate-y-0.5">
+                            <i class="fab fa-whatsapp text-lg"></i>
+                            <span>0895-4218-56508</span>
+                        </a>
+                        <a href="https://instagram.com/_zaraasa_" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-sm font-semibold shadow-sm transition-all hover:-translate-y-0.5">
+                            <i class="fab fa-instagram text-lg"></i>
+                            <span>@_zaraasa_</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Header Identitas & Tombol Edit -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6 mb-6">
+                    <div>
+                        <h1 id="displayNama" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Zara Asa</h1>
+                        <p class="text-slate-500 text-sm mt-1 flex items-center gap-2">
+                            <i class="fas fa-id-card text-indigo-500"></i>
+                            <span>Profil & Biodata Lengkap</span>
+                        </p>
+                    </div>
+                    <button onclick="openIdentityMenu()" class="self-start sm:self-auto inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-sm font-semibold transition-colors">
+                        <i class="fas fa-pen-to-square"></i>
+                        <span>Update Identitas</span>
+                    </button>
+                </div>
+
+                <!-- Grid Detail Identitas Diri -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <!-- Tempat, Tanggal Lahir -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center shrink-0">
+                            <i class="fas fa-cake-candles"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Tempat, Tanggal Lahir</p>
+                            <p id="displayTtl" class="text-sm font-semibold text-slate-800 mt-0.5">Garut, 11 Oktober 2008</p>
+                        </div>
+                    </div>
+
+                    <!-- Jenis Kelamin -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center shrink-0">
+                            <i class="fas fa-venus-mars"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Jenis Kelamin</p>
+                            <p id="displayJk" class="text-sm font-semibold text-slate-800 mt-0.5">Perempuan</p>
+                        </div>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Status</p>
+                            <p id="displayStatus" class="text-sm font-semibold text-slate-800 mt-0.5">Pelajar / Mahasiswa</p>
+                        </div>
+                    </div>
+
+                    <!-- Nama Orang Tua -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Nama Orang Tua</p>
+                            <p id="displayOrtu" class="text-sm font-semibold text-slate-800 mt-0.5">Bapak Ahmad & Ibu Siti</p>
+                        </div>
+                    </div>
+
+                    <!-- Hobi -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center shrink-0">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Hobi</p>
+                            <p id="displayHobi" class="text-sm font-semibold text-slate-800 mt-0.5">Membaca, Desain Grafis, Fotografi</p>
+                        </div>
+                    </div>
+
+                    <!-- Alamat -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3.5">
+                        <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center shrink-0">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Alamat Lengkap</p>
+                            <p id="displayAlamat" class="text-sm font-semibold text-slate-800 mt-0.5">Kabupaten Garut, Jawa Barat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRID 6 KATEGORI PORTOFOLIO & RIWAYAT -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- 1. RIWAYAT PENDIDIKAN -->
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-lg">
+                                <i class="fas fa-school"></i>
+                            </div>
+                            <h2 class="text-lg font-bold text-slate-900">Riwayat Pendidikan</h2>
+                        </div>
+                        <button onclick="openSectionModal('pendidikan')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white text-xs font-semibold transition-all">
+                            <i class="fas fa-plus"></i>
+                            <span>Isi / Update</span>
+                        </button>
+                    </div>
+                    <div id="list-pendidikan" class="space-y-3"></div>
+                </div>
+            </div>
+
+            <!-- 2. PRESTASI -->
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-lg">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h2 class="text-lg font-bold text-slate-900">Prestasi</h2>
+                        </div>
+                        <button onclick="openSectionModal('prestasi')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-500 text-amber-700 hover:text-white text-xs font-semibold transition-all">
+                            <i class="fas fa-plus"></i>
+                            <span>Isi / Update</span>
+                        </button>
+                    </div>
+                    <div id="list-prestasi" class="space-y-3"></div>
+                </div>
+            </div>
+
+            <!-- 3. KEAHLIAN -->
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h2 class="text-lg font-bold text-slate-900">Keahlian / Skill</h2>
+                        </div>
+                        <button onclick="openSectionModal('keahlian')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-600 text-emerald-700 hover:text-white text-xs font-semibold transition-all">
+                            <i class="fas fa-plus"></i>
+                            <span>Isi / Update</span>
+                        </button>
+                    </div>
+                    <div id="list-keahlian" class="flex flex-wrap gap-2"></div>
+                </div>
+            </div>
+
+            <!-- 4. PENGALAMAN ORGANISASI -->
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-lg">
+                                <i class="fas fa-sitemap"></i>
+                            </div>
+                            <h2 class="text-lg font-bold text-slate-900">Pengalaman Organisasi</h2>
+                        </div>
+                        <button onclick="openSectionModal('organisasi')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-600 text-purple-700 hover:text-white text-xs font-semibold transition-all">
+                            <i class="fas fa-plus"></i>
+                            <span>Isi / Update</span>
+                        </button>
+                    </div>
+                    <div id="list-organisasi" class="space-y-3"></div>
+                </div>
+            </div>
+
+            <!-- 5. KARYA / PRODUK -->
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-2xl bg-cyan-100 text-cyan-600 flex items-center justify-center text-lg">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h2 class="text-lg font-bold text-slate-900">Karya / Produk</h2>
+                        </div>
+                        <button onclick="openSectionModal('karya')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-50 hover:bg-cyan-600 text-cyan-700 hover:text-white text-xs font-semibold transition-all">
+                            <i class="fas fa-plus"></i>
+                            <span>Isi / Update</span>
+                        </button>
+                    </div>
+                    <div id="list-karya" class="space-y-3"></div>
+                </div>
+            </div>
+
+            <!-- 6. RIWAYAT PENYAKIT -->
+            <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-lg">
+                                <i class="fas fa-notes-medical"></i>
+                            </div>
+                            <h2 class="text-lg font-bold text-slate-900">Riwayat Penyakit</h2>
+                        </div>
+                        <button onclick="openSectionModal('penyakit')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white text-xs font-semibold transition-all">
+                            <i class="fas fa-plus"></i>
+                            <span>Isi / Update</span>
+                        </button>
+                    </div>
+                    <div id="list-penyakit" class="space-y-3"></div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 mt-12 py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-sm text-slate-500">
+                &copy; 2026 Portofolio Data Diri <strong class="text-slate-800">@_zaraasa_</strong>. All rights reserved.
+            </p>
+            <div class="flex items-center gap-4 text-sm">
+                <a href="https://wa.me/62895421856508" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-emerald-600 flex items-center gap-1.5 font-medium transition-colors">
+                    <i class="fab fa-whatsapp text-emerald-500 text-base"></i>
+                    <span>0895421856508</span>
+                </a>
+                <span class="text-slate-300">|</span>
+                <a href="https://instagram.com/_zaraasa_" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-pink-600 flex items-center gap-1.5 font-medium transition-colors">
+                    <i class="fab fa-instagram text-pink-500 text-base"></i>
+                    <span>@_zaraasa_</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 1: VERIFIKASI TOKEN / PASSWORD (111011)                         -->
+    <!-- ===================================================================== -->
+    <div id="tokenModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-100 transform transition-all">
+            <div class="w-14 h-14 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-2xl mx-auto mb-4">
+                <i class="fas fa-shield-halved"></i>
+            </div>
+            <h3 class="text-xl font-bold text-center text-slate-900">Verifikasi Keamanan</h3>
+            <p class="text-sm text-center text-slate-500 mt-1.5">
+                Masukkan token / password untuk membuka akses pengisian & pembaruan data.
+            </p>
+
+            <form onsubmit="verifyToken(event)" class="mt-6 space-y-4">
+                <div>
+                    <label for="tokenInput" class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Token / Password</label>
+                    <input type="password" id="tokenInput" placeholder="Masukkan token..." required
+                           class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none text-center text-lg tracking-widest font-bold">
+                    <p id="tokenError" class="hidden text-xs text-rose-600 font-medium mt-2 text-center">
+                        <i class="fas fa-circle-exclamation mr-1"></i> Token salah! Silakan coba lagi.
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-3 pt-2">
+                    <button type="button" onclick="closeModal('tokenModal')" class="w-1/2 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm transition-colors">
+                        Batal
+                    </button>
+                    <button type="submit" class="w-1/2 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-md transition-colors">
+                        Buka Akses
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 2: FORM ISI / EDIT IDENTITAS DIRI                               -->
+    <!-- ===================================================================== -->
+    <div id="identityModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-slate-100 my-8">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                        <i class="fas fa-user-pen"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">Isi / Update Identitas Diri</h3>
+                        <p class="text-xs text-slate-500">Perubahan akan langsung ditampilkan di halaman utama</p>
+                    </div>
+                </div>
+                <button onclick="closeModal('identityModal')" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <form onsubmit="saveIdentity(event)" class="mt-5 space-y-4">
+                <!-- Upload / URL Foto Profil -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">Foto Profil</label>
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                        <img id="previewFotoInput" src="https://placehold.co/300x300/6366f1/ffffff?text=Foto" alt="Preview" class="w-16 h-16 rounded-2xl object-cover border border-slate-300 bg-white">
+                        <div class="flex-1 w-full space-y-2">
+                            <input type="file" id="inputFotoFile" accept="image/*" onchange="handleImageUpload(event)"
+                                   class="block w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-700 cursor-pointer">
+                            <input type="text" id="inputFotoUrl" placeholder="Atau tempel URL link gambar foto..."
+                                   class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:border-indigo-500 outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap</label>
+                        <input type="text" id="inputNama" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Tempat, Tanggal Lahir</label>
+                        <input type="text" id="inputTtl" required placeholder="Contoh: Garut, 11 Oktober 2008" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Jenis Kelamin</label>
+                        <select id="inputJk" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 outline-none text-sm bg-white">
+                            <option value="Perempuan">Perempuan</option>
+                            <option value="Laki-laki">Laki-laki</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Status</label>
+                        <input type="text" id="inputStatus" required placeholder="Contoh: Pelajar / Mahasiswa" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Orang Tua</label>
+                        <input type="text" id="inputOrtu" required placeholder="Nama Ayah & Ibu" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 outline-none text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Hobi</label>
+                        <input type="text" id="inputHobi" required placeholder="Contoh: Membaca, Desain" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 outline-none text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 mb-1">Alamat Lengkap</label>
+                    <textarea id="inputAlamat" rows="2" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:border-indigo-500 outline-none text-sm"></textarea>
+                </div>
+
+                <div class="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+                    <button type="button" onclick="closeModal('identityModal')" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm">
+                        Batal
+                    </button>
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-md">
+                        Simpan Identitas
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 3: KELOLA DATA KATEGORI (PENDIDIKAN, PRESTASI, DLL)             -->
+    <!-- ===================================================================== -->
+    <div id="sectionModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-slate-100 my-8">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                <div>
+                    <h3 id="sectionModalTitle" class="text-lg font-bold text-slate-900">Kelola Data</h3>
+                    <p class="text-xs text-slate-500">Tambah data baru atau hapus data yang sudah ada</p>
+                </div>
+                <button onclick="closeModal('sectionModal')" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Form Tambah Item Baru -->
+            <form onsubmit="addSectionItem(event)" class="mt-4 bg-slate-50 p-4 rounded-2xl border border-slate-200/70 space-y-3">
+                <input type="hidden" id="currentCategory">
+                <div>
+                    <label id="labelField1" class="block text-xs font-semibold text-slate-600 mb-1">Judul / Nama</label>
+                    <input type="text" id="inputField1" required class="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:border-indigo-500 outline-none text-sm bg-white">
+                </div>
+                <div id="groupField2">
+                    <label id="labelField2" class="block text-xs font-semibold text-slate-600 mb-1">Keterangan / Tahun</label>
+                    <input type="text" id="inputField2" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:border-indigo-500 outline-none text-sm bg-white">
+                </div>
+                <button type="submit" class="w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm shadow-sm transition-colors">
+                    <i class="fas fa-plus mr-1"></i> Tambah Data
+                </button>
+            </form>
+
+            <!-- Daftar Item Saat Ini (Bisa Dihapus / Diedit) -->
+            <div class="mt-5">
+                <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2.5">Daftar Data Tersimpan</p>
+                <div id="modalItemList" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
+            </div>
+
+            <div class="mt-5 pt-3 border-t border-slate-100 flex justify-end">
+                <button onclick="closeModal('sectionModal')" class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-sm font-semibold">
+                    Selesai
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 text-sm font-medium">
+        <i class="fas fa-circle-check text-emerald-400"></i>
+        <span id="toastMessage">Data berhasil disimpan!</span>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- JAVASCRIPT LOGIC                                                      -->
+    <!-- ===================================================================== -->
+    <script>
+        // Token Password Wajib
+        const VALID_TOKEN = "111011";
+        let isAuthenticated = false;
+        let pendingAction = null;
+
+        // Data Default Awal
+        const defaultData = {
+            identitas: {
+                nama: "Zara Asa",
+                ttl: "Garut, 11 Oktober 2008",
+                jk: "Perempuan",
+                status: "Pelajar",
+                ortu: "Bapak Ahmad & Ibu Siti",
+                hobi: "Desain Grafis, Fotografi, Membaca",
+                alamat: "Kabupaten Garut, Jawa Barat",
+                foto: "https://placehold.co/300x300/6366f1/ffffff?text=Zara+Asa"
+            },
+            pendidikan: [
+                { title: "SMA Negeri 1 Garut", desc: "2023 - Sekarang (Jurusan IPA)" },
+                { title: "SMP Negeri 1 Garut", desc: "2020 - 2023" },
+                { title: "SD Negeri 1 Garut", desc: "2014 - 2020" }
+            ],
+            prestasi: [
+                { title: "Juara 1 Lomba Desain Poster Digital", desc: "Tingkat Kabupaten (2025)" },
+                { title: "Juara 2 Olimpiade Sains", desc: "Tingkat Sekolah (2024)" }
+            ],
+            keahlian: [
+                { title: "Desain Grafis (Canva & Figma)", desc: "Mahir" },
+                { title: "Public Speaking", desc: "Menengah" },
+                { title: "Microsoft Office", desc: "Mahir" },
+                { title: "Fotografi", desc: "Menengah" }
+            ],
+            organisasi: [
+                { title: "OSIS - Seksi Bidang Publikasi & Dokumentasi", desc: "2024 - 2025" },
+                { title: "Ekstrakurikuler Jurnalistik & Fotografi", desc: "2023 - Sekarang" }
+            ],
+            karya: [
+                { title: "Desain Majalah Dinding Digital Sekolah", desc: "Karya Tim Jurnalistik" },
+                { title: "Katalog Produk UMKM Lokal", desc: "Proyek Desain Grafis" }
+            ],
+            penyakit: [
+                { title: "Tidak ada riwayat penyakit berat", desc: "Kondisi sehat" }
+            ]
+        };
+
+        // Load data dari LocalStorage atau gunakan Default
+        let portfolioData = JSON.parse(localStorage.getItem('zaraPortfolioData')) || defaultData;
+
+        // Konfigurasi Label Modal per Kategori
+        const categoryConfig = {
+            pendidikan: { title: "Riwayat Pendidikan", f1: "Nama Sekolah / Perguruan Tinggi", f2: "Tahun Lulus / Jurusan", showF2: true },
+            prestasi: { title: "Prestasi & Penghargaan", f1: "Nama Prestasi / Kejuaraan", f2: "Tingkat & Tahun", showF2: true },
+            keahlian: { title: "Keahlian / Skill", f1: "Nama Keahlian", f2: "Tingkat Kemahiran (Pemula/Menengah/Mahir)", showF2: true },
+            organisasi: { title: "Pengalaman Organisasi", f1: "Nama Organisasi & Jabatan", f2: "Periode Tahun", showF2: true },
+            karya: { title: "Karya / Produk", f1: "Nama Karya atau Produk", f2: "Deskripsi Singkat / Tahun", showF2: true },
+            penyakit: { title: "Riwayat Penyakit", f1: "Nama Penyakit / Keterangan Medis", f2: "Tahun / Status Penanganan", showF2: true }
+        };
+
+        // Render Semua Data ke Halaman Utama
+        function renderAll() {
+            // Render Identitas
+            const id = portfolioData.identitas;
+            document.getElementById('displayNama').textContent = id.nama;
+            document.getElementById('displayTtl').textContent = id.ttl;
+            document.getElementById('displayJk').textContent = id.jk;
+            document.getElementById('displayStatus').textContent = id.status;
+            document.getElementById('displayOrtu').textContent = id.ortu;
+            document.getElementById('displayHobi').textContent = id.hobi;
+            document.getElementById('displayAlamat').textContent = id.alamat;
+            document.getElementById('displayFoto').src = id.foto;
+
+            // Render List Kategori Standar
+            renderList('pendidikan', 'indigo');
+            renderList('prestasi', 'amber');
+            renderList('organisasi', 'purple');
+            renderList('karya', 'cyan');
+            renderList('penyakit', 'rose');
+
+            // Render Keahlian (Badge Style)
+            const skillContainer = document.getElementById('list-keahlian');
+            if (portfolioData.keahlian.length === 0) {
+                skillContainer.innerHTML = `<p class="text-sm text-slate-400 italic">Belum ada data keahlian.</p>`;
+            } else {
+                skillContainer.innerHTML = portfolioData.keahlian.map(item => `
+                    <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-50 border border-emerald-200/70 text-emerald-800 text-sm font-medium">
+                        <i class="fas fa-check-circle text-emerald-500 text-xs"></i>
+                        <span>${escapeHtml(item.title)}</span>
+                        ${item.desc ? `<span class="text-xs px-2 py-0.5 rounded-md bg-white text-emerald-600 font-semibold">${escapeHtml(item.desc)}</span>` : ''}
+                    </div>
+                `).join('');
+            }
+        }
+
+        function renderList(category, color) {
+            const container = document.getElementById(`list-${category}`);
+            const items = portfolioData[category];
+
+            if (!items || items.length === 0) {
+                container.innerHTML = `<p class="text-sm text-slate-400 italic">Belum ada data ditambahkan.</p>`;
+                return;
+            }
+
+            container.innerHTML = items.map(item => `
+                <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 hover:border-${color}-200 transition-colors">
+                    <h4 class="text-sm font-bold text-slate-800">${escapeHtml(item.title)}</h4>
+                    ${item.desc ? `<p class="text-xs text-slate-500 mt-1">${escapeHtml(item.desc)}</p>` : ''}
+                </div>
+            `).join('');
+        }
+
+        // Sistem Proteksi Token (111011)
+        function requireToken(callback) {
+            if (isAuthenticated) {
+                callback();
+            } else {
+                pendingAction = callback;
+                document.getElementById('tokenInput').value = '';
+                document.getElementById('tokenError').classList.add('hidden');
+                openModal('tokenModal');
+                setTimeout(() => document.getElementById('tokenInput').focus(), 100);
+            }
+        }
+
+        function verifyToken(e) {
+            e.preventDefault();
+            const input = document.getElementById('tokenInput').value.trim();
+            if (input === VALID_TOKEN) {
+                isAuthenticated = true;
+                closeModal('tokenModal');
+                updateAuthBadge();
+                showToast("Token valid! Akses pengisian data terbuka.");
+                if (pendingAction) {
+                    pendingAction();
+                    pendingAction = null;
+                }
+            } else {
+                document.getElementById('tokenError').classList.remove('hidden');
+                document.getElementById('tokenInput').value = '';
+                document.getElementById('tokenInput').focus();
+            }
+        }
+
+        function updateAuthBadge() {
+            const badge = document.getElementById('authStatusBadge');
+            badge.className = "hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200";
+            badge.innerHTML = `<i class="fas fa-lock-open text-emerald-500"></i><span>Akses Edit Aktif</span>`;
+        }
+
+        // Buka Menu Identitas (Wajib Token 111011)
+        function openIdentityMenu() {
+            requireToken(() => {
+                const id = portfolioData.identitas;
+                document.getElementById('inputNama').value = id.nama;
+                document.getElementById('inputTtl').value = id.ttl;
+                document.getElementById('inputJk').value = id.jk;
+                document.getElementById('inputStatus').value = id.status;
+                document.getElementById('inputOrtu').value = id.ortu;
+                document.getElementById('inputHobi').value = id.hobi;
+                document.getElementById('inputAlamat').value = id.alamat;
+                document.getElementById('inputFotoUrl').value = id.foto;
+                document.getElementById('previewFotoInput').src = id.foto;
+                openModal('identityModal');
+            });
+        }
+
+        // Handle Upload Foto dari Perangkat
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('previewFotoInput').src = e.target.result;
+                document.getElementById('inputFotoUrl').value = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Simpan Identitas
+        function saveIdentity(e) {
+            e.preventDefault();
+            portfolioData.identitas = {
+                nama: document.getElementById('inputNama').value.trim(),
+                ttl: document.getElementById('inputTtl').value.trim(),
+                jk: document.getElementById('inputJk').value,
+                status: document.getElementById('inputStatus').value.trim(),
+                ortu: document.getElementById('inputOrtu').value.trim(),
+                hobi: document.getElementById('inputHobi').value.trim(),
+                alamat: document.getElementById('inputAlamat').value.trim(),
+                foto: document.getElementById('inputFotoUrl').value.trim() || defaultData.identitas.foto
+            };
+            saveToStorage();
+            renderAll();
+            closeModal('identityModal');
+            showToast("Data identitas berhasil diperbarui!");
+        }
+
+        // Buka Modal Kategori (Prestasi, Pendidikan, dll)
+        function openSectionModal(category) {
+            requireToken(() => {
+                const cfg = categoryConfig[category];
+                document.getElementById('currentCategory').value = category;
+                document.getElementById('sectionModalTitle').textContent = `Isi / Update ${cfg.title}`;
+                document.getElementById('labelField1').textContent = cfg.f1;
+                document.getElementById('labelField2').textContent = cfg.f2;
+                document.getElementById('inputField1').value = '';
+                document.getElementById('inputField2').value = '';
+                renderModalItems(category);
+                openModal('sectionModal');
+            });
+        }
+
+        function renderModalItems(category) {
+            const listContainer = document.getElementById('modalItemList');
+            const items = portfolioData[category];
+
+            if (items.length === 0) {
+                listContainer.innerHTML = `<p class="text-xs text-slate-400 text-center py-4">Belum ada data tersimpan.</p>`;
+                return;
+            }
+
+            listContainer.innerHTML = items.map((item, index) => `
+                <div class="flex items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
+                    <div class="min-w-0">
+                        <p class="text-sm font-semibold text-slate-800 truncate">${escapeHtml(item.title)}</p>
+                        ${item.desc ? `<p class="text-xs text-slate-500 truncate">${escapeHtml(item.desc)}</p>` : ''}
+                    </div>
+                    <button onclick="deleteSectionItem('${category}', ${index})" title="Hapus Data" class="w-8 h-8 rounded-lg bg-rose-100 hover:bg-rose-600 text-rose-600 hover:text-white flex items-center justify-center shrink-0 transition-colors">
+                        <i class="fas fa-trash-can text-xs"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function addSectionItem(e) {
+            e.preventDefault();
+            const category = document.getElementById('currentCategory').value;
+            const title = document.getElementById('inputField1').value.trim();
+            const desc = document.getElementById('inputField2').value.trim();
+
+            if (!title) return;
+
+            portfolioData[category].unshift({ title, desc });
+            saveToStorage();
+            renderAll();
+            renderModalItems(category);
+
+            document.getElementById('inputField1').value = '';
+            document.getElementById('inputField2').value = '';
+            showToast("Data berhasil ditambahkan!");
+        }
+
+        function deleteSectionItem(category, index) {
+            portfolioData[category].splice(index, 1);
+            saveToStorage();
+            renderAll();
+            renderModalItems(category);
+            showToast("Data berhasil dihapus!");
+        }
+
+        // Helpers Modal & Storage
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function saveToStorage() {
+            try {
+                localStorage.setItem('zaraPortfolioData', JSON.stringify(portfolioData));
+            } catch (err) {
+                console.warn("Penyimpanan lokal penuh (kemungkinan ukuran foto terlalu besar).");
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Inisialisasi Halaman Saat Pertama Kali Dibuka
+        window.addEventListener('DOMContentLoaded', renderAll);
+    </script>
+</body>
+</html>
